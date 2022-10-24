@@ -6,13 +6,16 @@ using UnityEngine;
 
 public class CharacterAnimation : MonoBehaviour
 {
+    private const string _isMoving = "IsMoving";
+    private const string _isJump = "Jump";
+
     private Animator _animator;
 
     public bool IsMoving { private get; set; }
 
     public void Jump()
     {
-        _animator.SetTrigger("Jump");
+        _animator.SetTrigger(_isJump);
     }
 
     private void Start()
@@ -22,6 +25,6 @@ public class CharacterAnimation : MonoBehaviour
 
     private void FixedUpdate()
     {
-        _animator.SetBool("IsMoving", IsMoving);
+        _animator.SetBool(_isMoving, IsMoving);
     }
 }

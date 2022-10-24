@@ -7,6 +7,7 @@ public class HeroMovement : MonoBehaviour
     [SerializeField] private SpriteRenderer _spriteRenderer;
     [SerializeField] private Vector3 _groundCheckOffset;
     [SerializeField] private float _jumpForce;
+
     private CharacterAnimation _characterAnimations;
     private bool _isMoving;
     private bool _isGrounded;
@@ -42,7 +43,7 @@ public class HeroMovement : MonoBehaviour
 
         if (hit.collider != null)
         {
-            if (hit.collider.CompareTag("Platform"))
+            if (hit.collider.TryGetComponent<Platform>(out Platform platform))
             {
                 _isGrounded = true;
             }
